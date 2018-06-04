@@ -1,0 +1,29 @@
+<h1>Payment veiw </h1>
+
+<%= link_to 'List of payments', payments_path %>
+
+<p>
+  <b>Name:</b>
+  <%= @payment.name %>
+</p>
+ 
+<p>
+  <b>Type:</b>
+  <%= @payment.ptype %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @category.name %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @payment.amount %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @payment.created_at %>
+</p>
+

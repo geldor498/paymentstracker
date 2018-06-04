@@ -1,0 +1,34 @@
+<%= form_with model: @payment,  local: true do |form| %>
+  <% if @payment.errors.any? %>
+    <h2> Errors </h2>
+    <ul>
+      <% @payment.errors.full_messages.each  do |msg| %>
+        <li><%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :amount %><br>
+    <%= form.text_field :amount %>
+  </p>
+
+  <p>
+    <%= form.label :type %><br>
+    <%= form.select(:ptype, options_for_select(['Expence','Income'])) %>
+  </p>
+
+  <p>
+    <%= form.label 'category' %><br>
+    <%= form.select(:category_id, options_for_select(@categories, @payment.category_id)) %>
+  </p>
+
+  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

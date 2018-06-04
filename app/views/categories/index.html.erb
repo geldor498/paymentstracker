@@ -1,0 +1,31 @@
+<h1>Categories:</h1>
+
+<%= link_to 'New', new_category_path, {class:"btn btn-primary"} %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Type</th>
+      <th scope="col">Link</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.id %></td>
+      <td><%= category.name %></td>
+      <td><%= category.ctype %></td>
+      <td><%= link_to 'View', category_path(category), {class:"btn btn-outline-primary"} %></td>
+      <td><%= link_to 'Edit', edit_category_path(category), {class:"btn btn-outline-primary"} %></td>
+      <td><%= link_to 'Destroy',
+              category_path(category),
+              method: :delete,
+              class:"btn btn-outline-danger",
+              data: { confirm: 'Are you sure?' }  %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

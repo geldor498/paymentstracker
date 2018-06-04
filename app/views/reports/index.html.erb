@@ -1,0 +1,36 @@
+<h1>Reports</h1>
+
+
+<%= form_with model: @search, url: reports_index_path, method: :get,  local: true do |form| %>
+  <%= form.label ' Category name:' %> <%= form.text_field :cname %>
+  <%= form.label ' From:' %> <%= form.text_field :dtfrom %>
+  <%= form.label ' To:' %> <%= form.text_field :dtto %>
+  <%= form.label :type %> <%= form.select(:ptype, options_for_select(['Expence','Income'])) %>
+
+  <input name="commit" value="search" data-disable-with="search" type="submit" class="btn btn-outline-primary">
+  <% link_to 'View', reports_index_path(), {class:"btn btn-outline-primary"}%>
+  <a href="/reports/index" class="btn btn-outline-primary">Clear</a>
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Type</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rows.each do |payment| %>
+    <tr>
+      <td><%= payment.id %></td>
+      <td><%= payment.name %></td>
+      <td><%= payment.category.name %></td>
+      <td><%= payment.ptype %></td>
+      <td><%= payment.created_at %></td>
+    </tr>
+    <% end %>
+   </tbody>
+</table>
